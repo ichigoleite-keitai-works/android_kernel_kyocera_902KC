@@ -1,13 +1,8 @@
-CFLAGS_REMOVE_empty.o = -flto -flto=full -fvisibility=hidden
-
 hostprogs-y	:= modpost mk_elfconfig
 
 always		:= $(hostprogs-y) empty.o
 
 modpost-objs	:= modpost.o file2alias.o sumversion.o
-
-HOSTCFLAGS_modpost.o     += -I$(obj)
-HOSTCFLAGS_file2alias.o  += -I$(obj)h
 
 define sed-y
 	"/^->/{s:->#\(.*\):/* \1 */:; \
