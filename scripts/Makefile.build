@@ -30,6 +30,8 @@ ldflags-y  :=
 subdir-asflags-y :=
 subdir-ccflags-y :=
 
+ccflags-y += -Wno-maybe-uninitialized
+
 # Read auto.conf if it exists, otherwise ignore
 -include include/config/auto.conf
 
