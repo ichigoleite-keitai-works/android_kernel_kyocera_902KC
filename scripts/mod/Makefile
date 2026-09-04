@@ -4,8 +4,7 @@ always		:= $(hostprogs-y) empty.o
 
 modpost-objs	:= modpost.o file2alias.o sumversion.o
 
-HOSTCFLAGS_modpost.o     += -I$(obj)
-HOSTCFLAGS_file2alias.o  += -I$(obj)h
+devicetable-offsets-file := devicetable-offsets.h
 
 define sed-y
 	"/^->/{s:->#\(.*\):/* \1 */:; \
