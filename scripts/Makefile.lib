@@ -4,6 +4,10 @@ ccflags-y  += $(EXTRA_CFLAGS)
 cppflags-y += $(EXTRA_CPPFLAGS)
 ldflags-y  += $(EXTRA_LDFLAGS)
 
+# Disable maybe-uninitialized
+ccflags-y += -Wno-maybe-uninitialized
+cppflags-y += -Wno-maybe-uninitialized
+
 #
 # flags that take effect in sub directories
 export KBUILD_SUBDIR_ASFLAGS := $(KBUILD_SUBDIR_ASFLAGS) $(subdir-asflags-y)
