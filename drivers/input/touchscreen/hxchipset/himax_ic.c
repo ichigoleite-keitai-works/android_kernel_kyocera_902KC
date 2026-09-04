@@ -1450,7 +1450,6 @@ int CRC_from_FW, int mode)
 	int CRC = 0xFFFFFFFF;
 	int PolyNomial = 0x82F63B78;
 	int length = 0;
-
 	if (mode == fw_image_128k)
 		length = 0x8000;
 	else if (mode == fw_image_124k)

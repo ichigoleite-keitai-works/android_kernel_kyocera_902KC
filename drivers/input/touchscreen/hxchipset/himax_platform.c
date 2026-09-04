@@ -47,7 +47,6 @@ void himax_vk_parser(struct device_node *dt,
 	if (node == NULL) {
 		I(" DT-No vk info in DT");
 		return;
-
 	} else {
 		while ((pp = of_get_next_child(node, pp)))
 			cnt++;

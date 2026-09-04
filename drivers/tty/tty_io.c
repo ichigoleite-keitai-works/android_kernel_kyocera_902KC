@@ -886,7 +886,6 @@ void disassociate_ctty(int on_exit)
 #endif
 	}
 
-
 	/* Now clear signal->tty under the lock */
 	read_lock(&tasklist_lock);
 	session_clear_tty(task_session(current));
@@ -2523,7 +2522,6 @@ static int tiocspgrp(struct tty_struct *tty, struct tty_struct *real_tty, pid_t 
 		return -ENOTTY;
 	if (retval)
 		return retval;
-
 	if (get_user(pgrp_nr, p))
 		return -EFAULT;
 	if (pgrp_nr < 0)

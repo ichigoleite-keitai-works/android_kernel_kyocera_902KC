@@ -22,7 +22,6 @@
 #include <linux/types.h>
 #include <linux/i2c.h>
 #include <linux/interrupt.h>
-
 #if defined(CONFIG_HMX_DB)
 #include <linux/regulator/consumer.h>
 #endif

@@ -59,7 +59,6 @@ static void himax_ts_late_resume(struct early_suspend *h);
 int himax_input_register(struct himax_ts_data *ts)
 {
 	int ret;
-
 	ts->input_dev = input_allocate_device();
 	if (ts->input_dev == NULL) {
 		ret = -ENOMEM;
@@ -1367,7 +1366,6 @@ enum hrtimer_restart himax_ts_timer_func(struct hrtimer *timer)
 static void himax_cable_tp_status_handler_func(int connect_status)
 {
 	struct himax_ts_data *ts;
-
 	I("Touch: cable change to %d\n", connect_status);
 	ts = private_ts;
 	if (ts->cable_config) {

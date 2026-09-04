@@ -294,7 +294,6 @@ static ssize_t himax_debug_level_read(struct file *file, char *buf,
 	struct himax_ts_data *ts_data;
 	size_t ret = 0;
 	char *temp_buf;
-
 	ts_data = private_ts;
 
 	if (!HX_PROC_SEND_FLAG) {
@@ -1384,7 +1383,6 @@ static ssize_t himax_proc_flash_read(struct file *file, char *buf,
 	uint8_t local_flash_command = 0;
 	uint8_t local_flash_fail = 0;
 	char *temp_buf;
-
 	local_flash_complete = getFlashDumpComplete();
 	local_flash_progress = getFlashDumpProgress();
 	local_flash_command = getFlashCommand();

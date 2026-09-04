@@ -145,7 +145,6 @@ static void led_gpio_brightness_set(struct led_classdev *led_cdev,
 		       flash_led->flash_en);
 		goto err;
 	}
-
 	if (rc) {
 		pr_err("%s: Failed to set gpio %d\n", __func__,
 		       flash_led->flash_now);

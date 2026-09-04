@@ -101,7 +101,6 @@ static inline uint64_t buf_num_pages(uint64_t buf, size_t len)
 static inline uint64_t buf_page_size(uint32_t size)
 {
 	uint64_t sz = (size + (PAGE_SIZE - 1)) & PAGE_MASK;
-
 	return sz > PAGE_SIZE ? sz : PAGE_SIZE;
 }
 
@@ -760,7 +759,6 @@ static int context_restore_interrupted(struct fastrpc_file *fl,
 	struct smq_invoke_ctx *ctx = NULL, *ictx = NULL;
 	struct hlist_node *n;
 	struct fastrpc_ioctl_invoke *invoke = &invokefd->inv;
-
 	spin_lock(&fl->hlock);
 	hlist_for_each_entry_safe(ictx, n, &fl->clst.interrupted, hn) {
 		if (ictx->pid == current->pid) {
@@ -800,7 +798,6 @@ static int context_build_overlap(struct smq_invoke_ctx *ctx)
 	int outbufs = REMOTE_SCALARS_OUTBUFS(ctx->sc);
 	int nbufs = inbufs + outbufs;
 	struct overlap max;
-
 	for (i = 0; i < nbufs; ++i) {
 		ctx->overs[i].start = (uintptr_t)lpra[i].buf.pv;
 		ctx->overs[i].end = ctx->overs[i].start + lpra[i].buf.len;
@@ -941,7 +938,6 @@ bail:
 static void context_save_interrupted(struct smq_invoke_ctx *ctx)
 {
 	struct fastrpc_ctx_lst *clst = &ctx->fl->clst;
-
 	spin_lock(&ctx->fl->hlock);
 	hlist_del_init(&ctx->hn);
 	hlist_add_head(&ctx->hn, &clst->interrupted);
@@ -987,7 +983,6 @@ static void fastrpc_notify_users(struct fastrpc_file *me)
 {
 	struct smq_invoke_ctx *ictx;
 	struct hlist_node *n;
-
 	spin_lock(&me->hlock);
 	hlist_for_each_entry_safe(ictx, n, &me->clst.pending, hn) {
 		complete(&ictx->work);
@@ -1003,7 +998,6 @@ static void fastrpc_notify_drivers(struct fastrpc_apps *me, int cid)
 {
 	struct fastrpc_file *fl;
 	struct hlist_node *n;
-
 	spin_lock(&me->hlock);
 	hlist_for_each_entry_safe(fl, n, &me->drivers, hn) {
 		if (fl->cid == cid)
@@ -1012,7 +1006,6 @@ static void fastrpc_notify_drivers(struct fastrpc_apps *me, int cid)
 	spin_unlock(&me->hlock);
 
 }
-
 static void context_list_ctor(struct fastrpc_ctx_lst *me)
 {
 	INIT_HLIST_HEAD(&me->interrupted);
@@ -1024,7 +1017,6 @@ static void fastrpc_context_list_dtor(struct fastrpc_file *fl)
 	struct fastrpc_ctx_lst *clst = &fl->clst;
 	struct smq_invoke_ctx *ictx = NULL, *ctxfree;
 	struct hlist_node *n;
-
 	do {
 		ctxfree = NULL;
 		spin_lock(&fl->hlock);
@@ -1052,12 +1044,10 @@ static void fastrpc_context_list_dtor(struct fastrpc_file *fl)
 }
 
 static int fastrpc_file_free(struct fastrpc_file *fl);
-
 static void fastrpc_file_list_dtor(struct fastrpc_apps *me)
 {
 	struct fastrpc_file *fl, *free;
 	struct hlist_node *n;
-
 	do {
 		free = NULL;
 		spin_lock(&me->hlock);
@@ -1457,7 +1447,6 @@ static void smd_event_handler(void *priv, unsigned event)
 static void fastrpc_init(struct fastrpc_apps *me)
 {
 	int i;
-
 	INIT_HLIST_HEAD(&me->drivers);
 	INIT_HLIST_HEAD(&me->fls);
 	spin_lock_init(&me->hlock);
@@ -2804,7 +2793,6 @@ static void fastrpc_deinit(void)
 		}
 		for (j = 0; j < NUM_SESSIONS; j++) {
 			struct fastrpc_session_ctx *sess = &chan->session[j];
-
 			if (sess->smmu.enabled) {
 				arm_iommu_detach_device(sess->dev);
 				sess->dev = NULL;

@@ -5406,7 +5406,6 @@ void *qce_open(struct platform_device *pdev, int *rc)
 		goto err;
 	qce_setup_ce_sps_data(pce_dev);
 	qce_disable_clk(pce_dev);
-
 	return pce_dev;
 err:
 	qce_disable_clk(pce_dev);

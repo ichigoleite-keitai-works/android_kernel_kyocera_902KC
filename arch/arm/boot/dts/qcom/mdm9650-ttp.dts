@@ -75,7 +75,6 @@
 			};
 		};
 	};
-
 	usb_detect {
 		compatible = "qcom,gpio-usbdetect";
 		interrupt-parent = <&spmi_bus>;

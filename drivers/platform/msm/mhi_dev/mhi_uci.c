@@ -912,7 +912,6 @@ static ssize_t mhi_uci_client_read(struct file *file, char __user *ubuf,
 	ureq.buf = uci_handle->in_buf_list[0].addr;
 	ureq.len = uci_handle->in_buf_list[0].buf_size;
 
-
 	uci_log(UCI_DBG_VERBOSE, "Client attempted read on chan %d\n",
 			ureq.chan);
 	do {
