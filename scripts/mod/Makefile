@@ -4,6 +4,9 @@ always		:= $(hostprogs-y) empty.o
 
 modpost-objs	:= modpost.o file2alias.o sumversion.o
 
+HOSTCFLAGS_modpost.o     += -I$(obj)
+HOSTCFLAGS_file2alias.o  += -I$(obj)h
+
 define sed-y
 	"/^->/{s:->#\(.*\):/* \1 */:; \
 	s:^->\([^ ]*\) [\$$#]*\([-0-9]*\) \(.*\):#define \1 \2 /* \3 */:; \
