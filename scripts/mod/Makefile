@@ -1,16 +1,13 @@
 CFLAGS_REMOVE_empty.o = -flto -flto=full -fvisibility=hidden
 
-hostprogs-y	:= modpost mk_elfconfig devicetable-offsets
+hostprogs-y	:= modpost mk_elfconfig
 
 always		:= $(hostprogs-y) empty.o
 
 modpost-objs	:= modpost.o file2alias.o sumversion.o
 
 HOSTCFLAGS_modpost.o     += -I$(obj)
-HOSTCFLAGS_file2alias.o  += -I$(obj)
-HOSTCFLAGS_devicetable-offsets.o += -I$(srctree)/include -I$(obj)
-
-devicetable-offsets-file := devicetable-offsets.h
+HOSTCFLAGS_file2alias.o  += -I$(obj)h
 
 define sed-y
 	"/^->/{s:->#\(.*\):/* \1 */:; \
@@ -51,3 +48,5 @@ quiet_cmd_elfconfig = MKELF   $@
 
 $(obj)/elfconfig.h: $(obj)/empty.o $(obj)/mk_elfconfig FORCE
 	$(call if_changed,elfconfig)
+
+targets += elfconfig.h
