@@ -1,3 +1,6 @@
+// Disable maybe uninitialized
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+
 #ifndef __LINUX_SPINLOCK_H
 #define __LINUX_SPINLOCK_H
 

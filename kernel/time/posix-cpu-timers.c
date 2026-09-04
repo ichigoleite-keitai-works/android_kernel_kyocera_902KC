@@ -2,6 +2,9 @@
  * Implement CPU time clocks for the POSIX clock interface.
  */
 
+// Disable maybe uninitialized
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+
 #include <linux/sched.h>
 #include <linux/posix-timers.h>
 #include <linux/errno.h>
