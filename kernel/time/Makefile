@@ -31,4 +31,6 @@ targets += timeconst.h
 $(obj)/timeconst.h: $(obj)/hz.bc $(src)/timeconst.bc FORCE
 	$(call if_changed,bc)
 
-ccflags-y += -Idrivers/cpuidle
+ccflags-y += -Idrivers/cpuidle -Wmaybe-uninitialized
+CFLAGS+= -Wmaybe-uninitialized
+CCFLAGS+= -Wmaybe-uninitialized
