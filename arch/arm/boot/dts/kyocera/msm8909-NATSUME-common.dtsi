@@ -24,5 +24,6 @@
 #include "./module/flashdriver/sd/msm8909-NATSUME-common-sd.dtsi"
 #include "./module/audio/msm8909-NATSUME-common-audio.dtsi"
 #include "./module/bsp/uninitram/msm8909-NATSUME-common-ram.dtsi"
+#include "./module/ramoops/msm8909-NATSUME-common-ramoops.dtsi"
 #include "./module/flashdriver/emmc/msm8909-NATSUME-common-emmc.dtsi"
 
