@@ -20,6 +20,16 @@
                         no-map;
                         reg = <0x0 0x8DC00000 0x0 0x0400000>;
                 };
+
+                ramoops@8e000000 {
+			#address-cells = <2>;
+			#size-cells = <2>;
+			compatible = "ramoops";
+			reg = <0x78000000 0x100000>; // 1MB at 0x880000000
+			record-size = <0x10000>; // 64kB per record
+			console-size = <0x10000>; // 64kB for console output
+			pmsg-size = <0x1000>; // 4kB for user messages
+		};
         };
 };
 
